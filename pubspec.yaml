@@ -1,0 +1,71 @@
+name: test_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+
+  fonts:
+    - family: montserrat
+      fonts:
+        - asset: assets/montserrat/montserrat_regular.ttf
+          weight: 400
+        - asset: assets/montserrat/montserrat_black.ttf
+          weight: 900
+        - asset: assets/montserrat/montserrat_black_italic.ttf
+          weight: 900
+          style: italic
+        - asset: assets/montserrat/montserrat_bold.ttf
+          weight: 700
+        - asset: assets/montserrat/montserrat_bold_italic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/montserrat/montserrat_extra_bold.ttf
+          weight: 800
+        - asset: assets/montserrat/montserrat_extra_bold_italic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/montserrat/montserrat_extra_light.ttf
+          weight: 200
+        - asset: assets/montserrat/montserrat_extra_light_italic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/montserrat/montserrat_italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/montserrat/montserrat_light.ttf
+          weight: 300
+        - asset: assets/montserrat/montserrat_light_italic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/montserrat/montserrat_medium.ttf
+          weight: 500
+        - asset: assets/montserrat/montserrat_medium_italic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/montserrat/montserrat_semi_bold.ttf
+          weight: 600
+        - asset: assets/montserrat/montserrat_semi_bold_italic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/montserrat/montserrat_thin.ttf
+          weight: 100
+        - asset: assets/montserrat/montserrat_thin_italic.ttf
+          weight: 100
+          style: italic
