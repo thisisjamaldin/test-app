@@ -14,6 +14,7 @@ class CalculatePage extends StatefulWidget {
 class _CalculatePageState extends State<CalculatePage> {
   int selectedCrypto = -1;
   String selectedMonth = 'January';
+  bool openSelectMonthArrow = false;
   TextEditingController amountCtrl = TextEditingController();
   TextEditingController growthCtrl = TextEditingController();
   TextEditingController yearCtrl = TextEditingController();
@@ -32,17 +33,51 @@ class _CalculatePageState extends State<CalculatePage> {
     'December'
   ];
 
-  @override
-  void dispose() {
-    super.dispose();
-    amountCtrl.dispose();
-    growthCtrl.dispose();
-    yearCtrl.dispose();
+  List<double> _getCustomItemsHeights(items) {
+    final List<double> itemsHeights = [];
+    for (int i = 0; i < (items.length * 2) - 1; i++) {
+      if (i.isEven) {
+        itemsHeights.add(40);
+      }
+      if (i.isOdd) {
+        itemsHeights.add(4);
+      }
+    }
+    return itemsHeights;
+  }
+
+  List<DropdownMenuItem<String>> dividerList(List list) {
+    List<DropdownMenuItem<String>> itemsWithDividers = [];
+    for (var i = 0; i < list.length; i++) {
+      itemsWithDividers.add(DropdownMenuItem(
+          value: list[i],
+          child: Text(
+            list[i],
+            style: const TextStyle(
+                color: Color(0xff121212),
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                fontFamily: 'montserrat'),
+          )));
+      if (list[i] != list.last) {
+        itemsWithDividers.add(
+          const DropdownMenuItem<String>(
+            enabled: false,
+            child: Divider(
+              thickness: 1,
+              color: Color(0xffEDEDED),
+            ),
+          ),
+        );
+      }
+    }
+    return itemsWithDividers;
   }
 
   @override
   void initState() {
     super.initState();
+
     amountCtrl.addListener(() {
       setState(() {});
     });
@@ -132,7 +167,8 @@ class _CalculatePageState extends State<CalculatePage> {
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(right: 8),
-                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                padding:
+                                    const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 0
                                         ? const Color(0xff409BFF)
@@ -155,7 +191,8 @@ class _CalculatePageState extends State<CalculatePage> {
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(right: 8),
-                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                padding:
+                                    const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 1
                                         ? const Color(0xff409BFF)
@@ -178,7 +215,8 @@ class _CalculatePageState extends State<CalculatePage> {
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(right: 8),
-                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                padding:
+                                    const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 2
                                         ? const Color(0xff409BFF)
@@ -201,7 +239,8 @@ class _CalculatePageState extends State<CalculatePage> {
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(right: 8),
-                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                padding:
+                                    const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 3
                                         ? const Color(0xff409BFF)
@@ -261,8 +300,8 @@ class _CalculatePageState extends State<CalculatePage> {
                                 children: [
                                   Expanded(
                                       child: Container(
-                                          padding:
-                                              const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                          padding: const EdgeInsets.fromLTRB(
+                                              12, 0, 12, 0),
                                           decoration: BoxDecoration(
                                               color: const Color(0xffF5F5F5),
                                               borderRadius:
@@ -277,8 +316,8 @@ class _CalculatePageState extends State<CalculatePage> {
                                   ),
                                   Expanded(
                                       child: Container(
-                                          padding:
-                                              const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                          padding: const EdgeInsets.fromLTRB(
+                                              12, 0, 12, 0),
                                           decoration: BoxDecoration(
                                               color: const Color(0xffF5F5F5),
                                               borderRadius:
@@ -329,15 +368,15 @@ class _CalculatePageState extends State<CalculatePage> {
                                 children: [
                                   Expanded(
                                       child: Container(
-                                          padding:
-                                              const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                          padding: const EdgeInsets.fromLTRB(
+                                              12, 0, 12, 0),
                                           decoration: BoxDecoration(
                                               color: const Color(0xffF5F5F5),
                                               borderRadius:
                                                   BorderRadius.circular(20)),
                                           child: CustomTextField(
                                             hint: '2024',
-                                            controller: yearCtrl,
+                                            controller: yearCtrl!,
                                             suffix: '',
                                           ))),
                                   const SizedBox(
@@ -345,78 +384,76 @@ class _CalculatePageState extends State<CalculatePage> {
                                   ),
                                   Expanded(
                                       child: Container(
-                                          padding:
-                                              const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                          padding: const EdgeInsets.fromLTRB(
+                                              12, 0, 12, 0),
                                           decoration: BoxDecoration(
                                               color: const Color(0xffF5F5F5),
                                               borderRadius:
                                                   BorderRadius.circular(20)),
-                                          child: DropdownButton2(
-                                            isExpanded: true,
-                                            value: selectedMonth,
-                                            items: [
-                                              ...months.map((mnth) {
-                                                return DropdownMenuItem(
-                                                    value: mnth,
-                                                    child: Text(mnth));
-                                              })
-                                            ],
-                                            onChanged: (value) {
-                                              setState(() {
-                                                selectedMonth = value!;
-                                              });
-                                            },
-                                            dropdownStyleData:
-                                                DropdownStyleData(
-                                              maxHeight: 140,
-                                              width: 180,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: Colors.white,
+                                          child: DropdownButtonHideUnderline(
+                                            child: DropdownButton2(
+                                              onMenuStateChange: (isOpen){
+                                                setState(() {
+                                                  openSelectMonthArrow = isOpen;
+                                                });
+                                              },
+                                              iconStyleData: IconStyleData(icon: Icon(openSelectMonthArrow?Icons.arrow_drop_up_rounded: Icons.arrow_drop_down_rounded, size: 30,)),
+                                              isExpanded: true,
+                                              value: selectedMonth,
+                                              // selectedItemBuilder: (context) {
+                                              //   return [Text('data')];
+                                              // },
+                                              items: dividerList(months),
+                                              menuItemStyleData:
+                                                  MenuItemStyleData(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8.0),
+                                                customHeights:
+                                                    _getCustomItemsHeights(
+                                                        months),
                                               ),
-                                              offset: const Offset(-10, 0),
-                                              scrollbarTheme:
-                                                  ScrollbarThemeData(
-                                                radius:
-                                                    const Radius.circular(10),
-                                                thickness:
-                                                    MaterialStateProperty.all(
-                                                        3),
-                                                thumbVisibility:
-                                                    WidgetStateProperty.all(
-                                                        true),
-                                                trackVisibility:
-                                                    const WidgetStatePropertyAll(
-                                                        true),
-                                                trackColor:
-                                                    const WidgetStatePropertyAll(
-                                                        Color(0xffC7C7C7)),
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  selectedMonth = value!;
+                                                });
+                                              },
+                                              dropdownStyleData:
+                                                  DropdownStyleData(
+                                                maxHeight: 140,
+                                                width: 180,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  color: Colors.white,
+                                                ),
+                                                offset: const Offset(-10, 0),
+                                                scrollbarTheme:
+                                                    ScrollbarThemeData(
+                                                  radius:
+                                                      const Radius.circular(10),
+                                                  thickness:
+                                                      MaterialStateProperty.all(
+                                                          3),
+                                                  thumbVisibility:
+                                                      WidgetStateProperty.all(
+                                                          true),
+                                                  trackVisibility:
+                                                      const WidgetStatePropertyAll(
+                                                          true),
+                                                  trackColor:
+                                                      const WidgetStatePropertyAll(
+                                                          Color(0xffC7C7C7)),
 
-                                                // crossAxisMargin: 12,
-                                                mainAxisMargin: 12,
-                                                thumbColor:
-                                                    const WidgetStatePropertyAll(
-                                                        Color(0xff121212)),
+                                                  // crossAxisMargin: 12,
+                                                  mainAxisMargin: 12,
+                                                  thumbColor:
+                                                      const WidgetStatePropertyAll(
+                                                          Color(0xff121212)),
+                                                ),
                                               ),
                                             ),
                                           )
-                                          //  DropdownButtonHideUnderline(
-                                          //   child: DropdownButton(
-                                          //       value: selectedMonth,
-                                          //       items: [
-                                          //         ...months.map((mnth) {
-                                          //           return DropdownMenuItem(
-                                          //               value: mnth,
-                                          //               child: Text(mnth));
-                                          //         })
-                                          //       ],
-                                          //       onChanged: (value) {
-                                          //         setState(() {
-                                          //           selectedMonth = value!;
-                                          //         });
-                                          //       }),
-                                          // ),
                                           )),
                                 ],
                               ),
@@ -451,8 +488,9 @@ class _CalculatePageState extends State<CalculatePage> {
                                               Navigator.pop(c);
                                             },
                                             child: Container(
-                                              padding: const EdgeInsets.fromLTRB(
-                                                  8, 8, 8, 0),
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      8, 8, 8, 0),
                                               color: Colors.transparent,
                                               child: const Icon(
                                                 Icons.close,

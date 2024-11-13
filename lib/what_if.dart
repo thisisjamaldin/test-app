@@ -16,6 +16,8 @@ class _WhatIfPageState extends State<WhatIfPage> {
   int selectedCrypto = -1;
   String selectedMonth = 'January';
   String selectedYear = '2024';
+  bool openSelectMonthArrow = false;
+  bool openSelectYearArrow = false;
   TextEditingController amountCtrl = TextEditingController();
   List<String> months = [
     'January',
@@ -38,13 +40,6 @@ class _WhatIfPageState extends State<WhatIfPage> {
     '2023',
     '2024',
   ];
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    amountCtrl.dispose();
-  }
 
   @override
   void initState() {
@@ -97,7 +92,9 @@ class _WhatIfPageState extends State<WhatIfPage> {
                   Expanded(
                     child: ListView(
                       children: [
-                        const SizedBox(height: 16,),
+                        const SizedBox(
+                          height: 16,
+                        ),
                         Container(
                           margin: const EdgeInsets.only(top: 8),
                           padding: const EdgeInsets.all(12),
@@ -143,7 +140,8 @@ class _WhatIfPageState extends State<WhatIfPage> {
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(right: 8),
-                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                padding:
+                                    const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 0
                                         ? const Color(0xff409BFF)
@@ -167,7 +165,8 @@ class _WhatIfPageState extends State<WhatIfPage> {
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(right: 8),
-                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                padding:
+                                    const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 1
                                         ? const Color(0xff409BFF)
@@ -191,7 +190,8 @@ class _WhatIfPageState extends State<WhatIfPage> {
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(right: 8),
-                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                padding:
+                                    const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 2
                                         ? const Color(0xff409BFF)
@@ -215,7 +215,8 @@ class _WhatIfPageState extends State<WhatIfPage> {
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(right: 8),
-                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                padding:
+                                    const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 3
                                         ? const Color(0xff409BFF)
@@ -275,64 +276,96 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                 children: [
                                   Expanded(
                                       child: Container(
-                                    padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                    padding:
+                                        const EdgeInsets.fromLTRB(12, 0, 12, 0),
                                     decoration: BoxDecoration(
                                         color: const Color(0xffF5F5F5),
                                         borderRadius:
                                             BorderRadius.circular(20)),
-                                    child: DropdownButton2(
-                                      isExpanded: true,
-
-                                      // Use selectedYear when showing the current selection, otherwise set to null
-                                      // value: selectedYear,
-                                      hint: Text(
-                                          selectedYear), // Display the selected year as a hint
-                                      items: years
-                                          .where((y) => y != selectedYear)
-                                          .where((y) => selectedCrypto == 2
-                                              ? y == '2022' ||
-                                                  y == '2023' ||
-                                                  y == '2024'
-                                              : true)
-                                          .where((y) => selectedCrypto == 3
-                                              ? y == '2023' || y == '2024'
-                                              : true)
-                                          .map((year) {
-                                        return DropdownMenuItem(
-                                          value: year,
-                                          child: Text(year),
-                                        );
-                                      }).toList(),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          selectedMonth = 'January';
-                                          selectedYear = value!;
-                                        });
-                                      },
-                                      dropdownStyleData: DropdownStyleData(
-                                        maxHeight: 140,
-                                        width: 180,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          color: Colors.white,
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton2(
+                                         onMenuStateChange: (isOpen){
+                                                setState(() {
+                                                  openSelectYearArrow = isOpen;
+                                                });
+                                              },
+                                              iconStyleData: IconStyleData(icon: Icon(openSelectYearArrow?Icons.arrow_drop_up_rounded: Icons.arrow_drop_down_rounded, size: 30,)),
+                                              
+                                        isExpanded: true,
+                                        menuItemStyleData: MenuItemStyleData(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8.0),
+                                          customHeights: _getCustomItemsHeights(
+                                              years
+                                                  .where(
+                                                      (y) => y != selectedYear)
+                                                  .where((y) =>
+                                                      selectedCrypto == 2
+                                                          ? y == '2022' ||
+                                                              y == '2023' ||
+                                                              y == '2024'
+                                                          : true)
+                                                  .where(
+                                                      (y) =>
+                                                          selectedCrypto == 3
+                                                              ? y == '2023' ||
+                                                                  y == '2024'
+                                                              : true)
+                                                  .toList()),
                                         ),
-                                        offset: const Offset(-10, 0),
-                                        scrollbarTheme: ScrollbarThemeData(
-                                          radius: const Radius.circular(10),
-                                          thickness:
-                                              MaterialStateProperty.all(3),
-                                          thumbVisibility:
-                                              MaterialStateProperty.all(true),
-                                          trackVisibility:
-                                              const WidgetStatePropertyAll(true),
-                                          trackColor: const WidgetStatePropertyAll(
-                                              Color(0xffC7C7C7)),
+                                        hint: Text(
+                                          selectedYear,
+                                          style: const TextStyle(
+                                              color: Color(0xff121212),
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 14,
+                                              fontFamily: 'montserrat'),
+                                        ),
+                                        items: dividerList(years
+                                            .where((y) => y != selectedYear)
+                                            .where((y) => selectedCrypto == 2
+                                                ? y == '2022' ||
+                                                    y == '2023' ||
+                                                    y == '2024'
+                                                : true)
+                                            .where((y) => selectedCrypto == 3
+                                                ? y == '2023' || y == '2024'
+                                                : true)
+                                            .toList()),
+                                        onChanged: (value) {
+                                          setState(() {
+                                            selectedMonth = 'January';
+                                            selectedYear = value!;
+                                          });
+                                        },
+                                        dropdownStyleData: DropdownStyleData(
+                                          maxHeight: 140,
+                                          width: 180,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: Colors.white,
+                                          ),
+                                          offset: const Offset(-10, 0),
+                                          scrollbarTheme: ScrollbarThemeData(
+                                            radius: const Radius.circular(10),
+                                            thickness:
+                                                MaterialStateProperty.all(3),
+                                            thumbVisibility:
+                                                MaterialStateProperty.all(true),
+                                            trackVisibility:
+                                                const WidgetStatePropertyAll(
+                                                    true),
+                                            trackColor:
+                                                const WidgetStatePropertyAll(
+                                                    Color(0xffC7C7C7)),
 
-                                          // crossAxisMargin: 12,
-                                          mainAxisMargin: 12,
-                                          thumbColor: const WidgetStatePropertyAll(
-                                              Color(0xff121212)),
+                                            // crossAxisMargin: 12,
+                                            mainAxisMargin: 12,
+                                            thumbColor:
+                                                const WidgetStatePropertyAll(
+                                                    Color(0xff121212)),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -342,58 +375,68 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                   ),
                                   Expanded(
                                       child: Container(
-                                    padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                    padding:
+                                        const EdgeInsets.fromLTRB(12, 0, 12, 0),
                                     decoration: BoxDecoration(
                                         color: const Color(0xffF5F5F5),
                                         borderRadius:
                                             BorderRadius.circular(20)),
-                                    child: DropdownButton2(
-                                      isExpanded: true,
-                                      value: selectedMonth,
-                                      items: selectedYear == '2024'
-                                          ? [
-                                              ...months.take(9).map((mnth) {
-                                                return DropdownMenuItem(
-                                                    value: mnth,
-                                                    child: Text(mnth));
-                                              })
-                                            ]
-                                          : [
-                                              ...months.map((mnth) {
-                                                return DropdownMenuItem(
-                                                    value: mnth,
-                                                    child: Text(mnth));
-                                              })
-                                            ],
-                                      onChanged: (value) {
-                                        setState(() {
-                                          selectedMonth = value!;
-                                        });
-                                      },
-                                      dropdownStyleData: DropdownStyleData(
-                                        maxHeight: 140,
-                                        width: 180,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          color: Colors.white,
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton2(
+                                         onMenuStateChange: (isOpen){
+                                                setState(() {
+                                                  openSelectMonthArrow = isOpen;
+                                                });
+                                              },
+                                              iconStyleData: IconStyleData(icon: Icon(openSelectMonthArrow?Icons.arrow_drop_up_rounded: Icons.arrow_drop_down_rounded, size: 30,)),
+                                              
+                                        isExpanded: true,
+                                        menuItemStyleData: MenuItemStyleData(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8.0),
+                                          customHeights: _getCustomItemsHeights(
+                                              selectedYear == '2024'
+                                                  ? months.take(9).toList()
+                                                  : months),
                                         ),
-                                        offset: const Offset(-10, 0),
-                                        scrollbarTheme: ScrollbarThemeData(
-                                          radius: const Radius.circular(10),
-                                          thickness:
-                                              MaterialStateProperty.all(3),
-                                          thumbVisibility:
-                                              MaterialStateProperty.all(true),
-                                          trackVisibility:
-                                              const WidgetStatePropertyAll(true),
-                                          trackColor: const WidgetStatePropertyAll(
-                                              Color(0xffC7C7C7)),
+                                        value: selectedMonth,
+                                        items: selectedYear == '2024'
+                                            ? dividerList(
+                                                months.take(9).toList())
+                                            : dividerList(months),
+                                        onChanged: (value) {
+                                          setState(() {
+                                            selectedMonth = value!;
+                                          });
+                                        },
+                                        dropdownStyleData: DropdownStyleData(
+                                          maxHeight: 140,
+                                          width: 180,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: Colors.white,
+                                          ),
+                                          offset: const Offset(-10, 0),
+                                          scrollbarTheme: ScrollbarThemeData(
+                                            radius: const Radius.circular(10),
+                                            thickness:
+                                                MaterialStateProperty.all(3),
+                                            thumbVisibility:
+                                                MaterialStateProperty.all(true),
+                                            trackVisibility:
+                                                const WidgetStatePropertyAll(
+                                                    true),
+                                            trackColor:
+                                                const WidgetStatePropertyAll(
+                                                    Color(0xffC7C7C7)),
 
-                                          // crossAxisMargin: 12,
-                                          mainAxisMargin: 12,
-                                          thumbColor: const WidgetStatePropertyAll(
-                                              Color(0xff121212)),
+                                            // crossAxisMargin: 12,
+                                            mainAxisMargin: 12,
+                                            thumbColor:
+                                                const WidgetStatePropertyAll(
+                                                    Color(0xff121212)),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -412,7 +455,8 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                 height: 8,
                               ),
                               Container(
-                                  padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(12, 0, 12, 0),
                                   decoration: BoxDecoration(
                                       color: const Color(0xffF5F5F5),
                                       borderRadius: BorderRadius.circular(20)),
@@ -451,8 +495,9 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                               Navigator.pop(c);
                                             },
                                             child: Container(
-                                              padding: const EdgeInsets.fromLTRB(
-                                                  8, 8, 8, 0),
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      8, 8, 8, 0),
                                               color: Colors.transparent,
                                               child: const Icon(
                                                 Icons.close,
@@ -522,5 +567,46 @@ class _WhatIfPageState extends State<WhatIfPage> {
 
   bool validFields() {
     return selectedCrypto != -1 && amountCtrl.text.length > 1;
+  }
+
+  List<double> _getCustomItemsHeights(List<String> items) {
+    final List<double> itemsHeights = [];
+    for (int i = 0; i < (items.length * 2) - 1; i++) {
+      if (i.isEven) {
+        itemsHeights.add(40);
+      }
+      if (i.isOdd) {
+        itemsHeights.add(4);
+      }
+    }
+    return itemsHeights;
+  }
+
+  List<DropdownMenuItem<String>> dividerList(List list) {
+    List<DropdownMenuItem<String>> itemsWithDividers = [];
+    for (var i = 0; i < list.length; i++) {
+      itemsWithDividers.add(DropdownMenuItem(
+          value: list[i],
+          child: Text(
+            list[i],
+            style: const TextStyle(
+                color: Color(0xff121212),
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                fontFamily: 'montserrat'),
+          )));
+      if (list[i] != list.last) {
+        itemsWithDividers.add(
+          const DropdownMenuItem<String>(
+            enabled: false,
+            child: Divider(
+              thickness: 1,
+              color: Color(0xffEDEDED),
+            ),
+          ),
+        );
+      }
+    }
+    return itemsWithDividers;
   }
 }

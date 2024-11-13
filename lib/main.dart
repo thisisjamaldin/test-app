@@ -33,7 +33,7 @@ class MainApp extends StatelessWidget {
         onTap: () {
           FocusScope.of(context).unfocus();
         },
-        child: MaterialApp(theme: appTheme(), home: MainPage()));
+        child: MaterialApp(theme: appTheme(), home: const MainPage()));
   }
 }
 
@@ -148,7 +148,7 @@ class MainPage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (c) => WhatIfPage()));
+                    context, MaterialPageRoute(builder: (c) => const WhatIfPage()));
               },
               child: Container(
                 margin: const EdgeInsets.only(top: 8),
@@ -181,7 +181,7 @@ class MainPage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (c) => CalculatePage()));
+                    MaterialPageRoute(builder: (c) => const CalculatePage()));
               },
               child: Container(
                 margin: const EdgeInsets.only(top: 16),
