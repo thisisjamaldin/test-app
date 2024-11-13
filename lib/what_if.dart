@@ -4,6 +4,8 @@ import 'package:test_app/local_data.dart';
 import 'package:test_app/widget/custom_text_field.dart';
 
 class WhatIfPage extends StatefulWidget {
+  const WhatIfPage({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _WhatIfPageState();
@@ -67,8 +69,8 @@ class _WhatIfPageState extends State<WhatIfPage> {
                   onTap: () => Navigator.pop(context),
                   child: Container(
                       color: Colors.transparent,
-                      padding: EdgeInsets.all(12),
-                      child: Icon(
+                      padding: const EdgeInsets.all(12),
+                      child: const Icon(
                         Icons.arrow_back_rounded,
                         size: 24,
                         color: Colors.white,
@@ -86,8 +88,8 @@ class _WhatIfPageState extends State<WhatIfPage> {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              decoration: const BoxDecoration(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
                   color: Colors.white),
               child: Column(
@@ -95,22 +97,22 @@ class _WhatIfPageState extends State<WhatIfPage> {
                   Expanded(
                     child: ListView(
                       children: [
-                        SizedBox(height: 16,),
+                        const SizedBox(height: 16,),
                         Container(
-                          margin: EdgeInsets.only(top: 8),
-                          padding: EdgeInsets.all(12),
+                          margin: const EdgeInsets.only(top: 8),
+                          padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                              color: Color(0xff409BFF),
+                              color: const Color(0xff409BFF),
                               borderRadius: BorderRadius.circular(20)),
-                          child: Text(
+                          child: const Text(
                             'Imagine how much money (USD) you could have earned if you had invested in cryptocurrency a few years ago',
                             style: TextStyle(fontSize: 16),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
-                        Align(
+                        const Align(
                             alignment: Alignment.centerRight,
                             child: Text(
                               'Calculated based on October 2024 prices*',
@@ -119,15 +121,15 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                 fontSize: 12,
                               ),
                             )),
-                        SizedBox(
+                        const SizedBox(
                           height: 40,
                         ),
-                        Text(
+                        const Text(
                           'Cryptocurrency',
                           style:
                               TextStyle(fontSize: 16, color: Color(0xff121212)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Wrap(
@@ -140,19 +142,19 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                 });
                               },
                               child: Container(
-                                margin: EdgeInsets.only(right: 8),
-                                padding: EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                margin: const EdgeInsets.only(right: 8),
+                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 0
-                                        ? Color(0xff409BFF)
-                                        : Color(0xffF5F5F5),
+                                        ? const Color(0xff409BFF)
+                                        : const Color(0xffF5F5F5),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Text(
                                   'Ethereum',
                                   style: TextStyle(
                                       color: selectedCrypto == 0
                                           ? Colors.white
-                                          : Color(0xff121212)),
+                                          : const Color(0xff121212)),
                                 ),
                               ),
                             ),
@@ -164,19 +166,19 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                 });
                               },
                               child: Container(
-                                margin: EdgeInsets.only(right: 8),
-                                padding: EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                margin: const EdgeInsets.only(right: 8),
+                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 1
-                                        ? Color(0xff409BFF)
-                                        : Color(0xffF5F5F5),
+                                        ? const Color(0xff409BFF)
+                                        : const Color(0xffF5F5F5),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Text(
                                   'Bitcoin',
                                   style: TextStyle(
                                       color: selectedCrypto == 1
                                           ? Colors.white
-                                          : Color(0xff121212)),
+                                          : const Color(0xff121212)),
                                 ),
                               ),
                             ),
@@ -188,19 +190,19 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                 });
                               },
                               child: Container(
-                                margin: EdgeInsets.only(right: 8),
-                                padding: EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                margin: const EdgeInsets.only(right: 8),
+                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 2
-                                        ? Color(0xff409BFF)
-                                        : Color(0xffF5F5F5),
+                                        ? const Color(0xff409BFF)
+                                        : const Color(0xffF5F5F5),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Text(
                                   'Solana',
                                   style: TextStyle(
                                       color: selectedCrypto == 2
                                           ? Colors.white
-                                          : Color(0xff121212)),
+                                          : const Color(0xff121212)),
                                 ),
                               ),
                             ),
@@ -212,37 +214,37 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                 });
                               },
                               child: Container(
-                                margin: EdgeInsets.only(right: 8),
-                                padding: EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                margin: const EdgeInsets.only(right: 8),
+                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 3
-                                        ? Color(0xff409BFF)
-                                        : Color(0xffF5F5F5),
+                                        ? const Color(0xff409BFF)
+                                        : const Color(0xffF5F5F5),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Text(
                                   'BNB',
                                   style: TextStyle(
                                       color: selectedCrypto == 3
                                           ? Colors.white
-                                          : Color(0xff121212)),
+                                          : const Color(0xff121212)),
                                 ),
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 24,
                         ),
                         if (selectedCrypto != -1)
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 'Time of investment',
                                 style: TextStyle(
                                     color: Color(0xff121212), fontSize: 16),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 12,
                               ),
                               Row(
@@ -252,20 +254,20 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                       child: Text(
                                     'Year',
                                     style: TextStyle(
-                                        color: Color(0xff12121299)
+                                        color: const Color(0xff121212)
                                             .withOpacity(0.6)),
                                   )),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 16,
                                   ),
                                   Expanded(
                                       child: Text('Month',
                                           style: TextStyle(
-                                              color: Color(0xff12121299)
+                                              color: const Color(0xff121212)
                                                   .withOpacity(0.6)))),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Row(
@@ -273,9 +275,9 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                 children: [
                                   Expanded(
                                       child: Container(
-                                    padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                    padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
                                     decoration: BoxDecoration(
-                                        color: Color(0xffF5F5F5),
+                                        color: const Color(0xffF5F5F5),
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: DropdownButton2(
@@ -323,26 +325,26 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                           thumbVisibility:
                                               MaterialStateProperty.all(true),
                                           trackVisibility:
-                                              WidgetStatePropertyAll(true),
-                                          trackColor: WidgetStatePropertyAll(
+                                              const WidgetStatePropertyAll(true),
+                                          trackColor: const WidgetStatePropertyAll(
                                               Color(0xffC7C7C7)),
 
                                           // crossAxisMargin: 12,
                                           mainAxisMargin: 12,
-                                          thumbColor: WidgetStatePropertyAll(
+                                          thumbColor: const WidgetStatePropertyAll(
                                               Color(0xff121212)),
                                         ),
                                       ),
                                     ),
                                   )),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 16,
                                   ),
                                   Expanded(
                                       child: Container(
-                                    padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                    padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
                                     decoration: BoxDecoration(
-                                        color: Color(0xffF5F5F5),
+                                        color: const Color(0xffF5F5F5),
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: DropdownButton2(
@@ -384,13 +386,13 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                           thumbVisibility:
                                               MaterialStateProperty.all(true),
                                           trackVisibility:
-                                              WidgetStatePropertyAll(true),
-                                          trackColor: WidgetStatePropertyAll(
+                                              const WidgetStatePropertyAll(true),
+                                          trackColor: const WidgetStatePropertyAll(
                                               Color(0xffC7C7C7)),
 
                                           // crossAxisMargin: 12,
                                           mainAxisMargin: 12,
-                                          thumbColor: WidgetStatePropertyAll(
+                                          thumbColor: const WidgetStatePropertyAll(
                                               Color(0xff121212)),
                                         ),
                                       ),
@@ -398,21 +400,21 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                   )),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 24,
                               ),
-                              Text(
+                              const Text(
                                 'Investment amount',
                                 style: TextStyle(
                                     color: Color(0xff121212), fontSize: 16),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Container(
-                                  padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                  padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
                                   decoration: BoxDecoration(
-                                      color: Color(0xffF5F5F5),
+                                      color: const Color(0xffF5F5F5),
                                       borderRadius: BorderRadius.circular(20)),
                                   child: CustomTextField(
                                       hint: '300\$',
@@ -430,7 +432,7 @@ class _WhatIfPageState extends State<WhatIfPage> {
                               context: context,
                               builder: (c) {
                                 return Dialog(
-                                  backgroundColor: Color(
+                                  backgroundColor: const Color(
                                       0xff409BFF), // Custom background color
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
@@ -449,10 +451,10 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                               Navigator.pop(c);
                                             },
                                             child: Container(
-                                              padding: EdgeInsets.fromLTRB(
+                                              padding: const EdgeInsets.fromLTRB(
                                                   8, 8, 8, 0),
                                               color: Colors.transparent,
-                                              child: Icon(
+                                              child: const Icon(
                                                 Icons.close,
                                                 color: Colors.white,
                                                 size: 26,
@@ -462,12 +464,12 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                         ),
                                         Text(
                                           '${calculate()}\$',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.w500,
                                               fontSize: 32),
                                         ),
-                                        SizedBox(height: 8),
-                                        Text(
+                                        const SizedBox(height: 8),
+                                        const Text(
                                           'You would have earned',
                                           style: TextStyle(
                                             fontSize: 20,
@@ -484,14 +486,14 @@ class _WhatIfPageState extends State<WhatIfPage> {
                       },
                       child: Container(
                         alignment: Alignment.center,
-                        padding: EdgeInsets.all(18),
+                        padding: const EdgeInsets.all(18),
                         width: double.infinity,
                         decoration: BoxDecoration(
                             color: validFields()
-                                ? Color(0xff409BFF)
-                                : Color(0xff9FCDFF),
+                                ? const Color(0xff409BFF)
+                                : const Color(0xff9FCDFF),
                             borderRadius: BorderRadius.circular(20)),
-                        child: Text('Calculate'),
+                        child: const Text('Calculate'),
                       ))
                 ],
               ),

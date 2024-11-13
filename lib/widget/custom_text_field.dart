@@ -6,12 +6,12 @@ class CustomTextField extends StatefulWidget {
   // String prefix;
   TextEditingController controller;
   CustomTextField({
-    Key? key,
+    super.key,
     required this.hint,
     required this.suffix,
     // required this.prefix,
     required this.controller,
-  }) : super(key: key);
+  });
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
 }
@@ -52,11 +52,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextField(
       keyboardType: TextInputType.number,
       controller: widget.controller,
-      style: TextStyle(color: Color(0xff121212)),
+      style: const TextStyle(color: Color(0xff121212)),
       decoration: InputDecoration(
           border: InputBorder.none,
           hintText: widget.hint,
-          hintStyle: TextStyle(color: Color(0xff121212).withOpacity(0.6))),
+          hintStyle: TextStyle(color: const Color(0xff121212).withOpacity(0.6))),
     );
   }
 }

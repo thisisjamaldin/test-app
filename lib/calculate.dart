@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:test_app/widget/custom_text_field.dart';
 
 class CalculatePage extends StatefulWidget {
+  const CalculatePage({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _CalculatePageState();
@@ -99,10 +101,10 @@ class _CalculatePageState extends State<CalculatePage> {
                           height: 16,
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 8),
-                          padding: EdgeInsets.all(12),
+                          margin: const EdgeInsets.only(top: 8),
+                          padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                              color: Color(0xff409BFF),
+                              color: const Color(0xff409BFF),
                               borderRadius: BorderRadius.circular(20)),
                           child: const Text(
                             'Calculate your profit based on the assumption of future investment growth',
@@ -198,37 +200,37 @@ class _CalculatePageState extends State<CalculatePage> {
                                 });
                               },
                               child: Container(
-                                margin: EdgeInsets.only(right: 8),
-                                padding: EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                margin: const EdgeInsets.only(right: 8),
+                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 3
-                                        ? Color(0xff409BFF)
-                                        : Color(0xffF5F5F5),
+                                        ? const Color(0xff409BFF)
+                                        : const Color(0xffF5F5F5),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Text(
                                   'BNB',
                                   style: TextStyle(
                                       color: selectedCrypto == 3
                                           ? Colors.white
-                                          : Color(0xff121212)),
+                                          : const Color(0xff121212)),
                                 ),
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 24,
                         ),
                         if (selectedCrypto != -1)
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 'Investment amount',
                                 style: TextStyle(
                                     color: Color(0xff121212), fontSize: 16),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 12,
                               ),
                               Row(
@@ -238,20 +240,20 @@ class _CalculatePageState extends State<CalculatePage> {
                                       child: Text(
                                     'Your cryptocurrency amount',
                                     style: TextStyle(
-                                        color: Color(0xff12121299)
+                                        color: const Color(0xff121212)
                                             .withOpacity(0.6)),
                                   )),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 16,
                                   ),
                                   Expanded(
                                       child: Text('Сryptocurrency growth',
                                           style: TextStyle(
-                                              color: Color(0xff12121299)
+                                              color: const Color(0xff121212)
                                                   .withOpacity(0.6)))),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Row(
@@ -260,9 +262,9 @@ class _CalculatePageState extends State<CalculatePage> {
                                   Expanded(
                                       child: Container(
                                           padding:
-                                              EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                              const EdgeInsets.fromLTRB(12, 0, 12, 0),
                                           decoration: BoxDecoration(
-                                              color: Color(0xffF5F5F5),
+                                              color: const Color(0xffF5F5F5),
                                               borderRadius:
                                                   BorderRadius.circular(20)),
                                           child: CustomTextField(
@@ -270,15 +272,15 @@ class _CalculatePageState extends State<CalculatePage> {
                                             controller: amountCtrl,
                                             suffix: '\$',
                                           ))),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 16,
                                   ),
                                   Expanded(
                                       child: Container(
                                           padding:
-                                              EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                              const EdgeInsets.fromLTRB(12, 0, 12, 0),
                                           decoration: BoxDecoration(
-                                              color: Color(0xffF5F5F5),
+                                              color: const Color(0xffF5F5F5),
                                               borderRadius:
                                                   BorderRadius.circular(20)),
                                           child: CustomTextField(
@@ -288,15 +290,15 @@ class _CalculatePageState extends State<CalculatePage> {
                                           ))),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 24,
                               ),
-                              Text(
+                              const Text(
                                 'When the crypto grows',
                                 style: TextStyle(
                                     color: Color(0xff121212), fontSize: 16),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 12,
                               ),
                               Row(
@@ -306,20 +308,20 @@ class _CalculatePageState extends State<CalculatePage> {
                                       child: Text(
                                     'Year',
                                     style: TextStyle(
-                                        color: Color(0xff12121299)
+                                        color: const Color(0xff121212)
                                             .withOpacity(0.6)),
                                   )),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 16,
                                   ),
                                   Expanded(
                                       child: Text('Month',
                                           style: TextStyle(
-                                              color: Color(0xff12121299)
+                                              color: const Color(0xff121212)
                                                   .withOpacity(0.6)))),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Row(
@@ -328,9 +330,9 @@ class _CalculatePageState extends State<CalculatePage> {
                                   Expanded(
                                       child: Container(
                                           padding:
-                                              EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                              const EdgeInsets.fromLTRB(12, 0, 12, 0),
                                           decoration: BoxDecoration(
-                                              color: Color(0xffF5F5F5),
+                                              color: const Color(0xffF5F5F5),
                                               borderRadius:
                                                   BorderRadius.circular(20)),
                                           child: CustomTextField(
@@ -338,15 +340,15 @@ class _CalculatePageState extends State<CalculatePage> {
                                             controller: yearCtrl,
                                             suffix: '',
                                           ))),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 16,
                                   ),
                                   Expanded(
                                       child: Container(
                                           padding:
-                                              EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                              const EdgeInsets.fromLTRB(12, 0, 12, 0),
                                           decoration: BoxDecoration(
-                                              color: Color(0xffF5F5F5),
+                                              color: const Color(0xffF5F5F5),
                                               borderRadius:
                                                   BorderRadius.circular(20)),
                                           child: DropdownButton2(
@@ -382,19 +384,19 @@ class _CalculatePageState extends State<CalculatePage> {
                                                     MaterialStateProperty.all(
                                                         3),
                                                 thumbVisibility:
-                                                    MaterialStateProperty.all(
+                                                    WidgetStateProperty.all(
                                                         true),
                                                 trackVisibility:
-                                                    WidgetStatePropertyAll(
+                                                    const WidgetStatePropertyAll(
                                                         true),
                                                 trackColor:
-                                                    WidgetStatePropertyAll(
+                                                    const WidgetStatePropertyAll(
                                                         Color(0xffC7C7C7)),
 
                                                 // crossAxisMargin: 12,
                                                 mainAxisMargin: 12,
                                                 thumbColor:
-                                                    WidgetStatePropertyAll(
+                                                    const WidgetStatePropertyAll(
                                                         Color(0xff121212)),
                                               ),
                                             ),
@@ -430,7 +432,7 @@ class _CalculatePageState extends State<CalculatePage> {
                               context: context,
                               builder: (c) {
                                 return Dialog(
-                                  backgroundColor: Color(
+                                  backgroundColor: const Color(
                                       0xff409BFF), // Custom background color
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
@@ -449,10 +451,10 @@ class _CalculatePageState extends State<CalculatePage> {
                                               Navigator.pop(c);
                                             },
                                             child: Container(
-                                              padding: EdgeInsets.fromLTRB(
+                                              padding: const EdgeInsets.fromLTRB(
                                                   8, 8, 8, 0),
                                               color: Colors.transparent,
-                                              child: Icon(
+                                              child: const Icon(
                                                 Icons.close,
                                                 color: Colors.white,
                                                 size: 26,
@@ -462,14 +464,14 @@ class _CalculatePageState extends State<CalculatePage> {
                                         ),
                                         Text(
                                           '${(int.parse(amountCtrl.text.replaceAll('\$', '')) + (int.parse(amountCtrl.text.replaceAll('\$', '')) * (int.parse(growthCtrl.text.replaceAll('%', '')) / 100))).toInt()}\$',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.w500,
                                               fontSize: 32),
                                         ),
-                                        SizedBox(height: 8),
+                                        const SizedBox(height: 8),
                                         Text(
                                           'By September ${yearCtrl.text}, you could have if it grows',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -484,14 +486,14 @@ class _CalculatePageState extends State<CalculatePage> {
                       },
                       child: Container(
                         alignment: Alignment.center,
-                        padding: EdgeInsets.all(18),
+                        padding: const EdgeInsets.all(18),
                         width: double.infinity,
                         decoration: BoxDecoration(
                             color: validFields()
-                                ? Color(0xff409BFF)
-                                : Color(0xff9FCDFF),
+                                ? const Color(0xff409BFF)
+                                : const Color(0xff9FCDFF),
                             borderRadius: BorderRadius.circular(20)),
-                        child: Text('Calculate'),
+                        child: const Text('Calculate'),
                       ))
                 ],
               ),

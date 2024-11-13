@@ -11,7 +11,7 @@ class MainApp extends StatelessWidget {
 
   ThemeData appTheme() {
     return ThemeData(
-      scaffoldBackgroundColor: Color(0xff121212),
+      scaffoldBackgroundColor: const Color(0xff121212),
       fontFamily: 'montserrat',
       useMaterial3: true,
       textTheme: const TextTheme(
@@ -20,9 +20,9 @@ class MainApp extends StatelessWidget {
         bodyLarge: TextStyle(color: Colors.white),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        hintStyle: TextStyle(color: Color(0xff121212).withOpacity(0.6)),
-        suffixStyle: TextStyle(color: Color(0xff121212)),
-        labelStyle: TextStyle(color: Color(0xff121212)),
+        hintStyle: TextStyle(color: const Color(0xff121212).withOpacity(0.6)),
+        suffixStyle: const TextStyle(color: Color(0xff121212)),
+        labelStyle: const TextStyle(color: Color(0xff121212)),
       ),
     );
   }
@@ -38,6 +38,8 @@ class MainApp extends StatelessWidget {
 }
 
 class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +94,7 @@ class MainPage extends StatelessWidget {
                           children: [
                             Text(
                               i == 0 ? 'Bitcoin' : 'Ethereum',
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
                               i == 0 ? '(BTC)' : '(ETH)',
@@ -128,7 +130,7 @@ class MainPage extends StatelessWidget {
                           children: [
                             Text(
                               i == 0 ? 'BNB' : 'Solana',
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
                               i == 0 ? '(BNB)' : '(SOL)',
@@ -182,20 +184,20 @@ class MainPage extends StatelessWidget {
                     MaterialPageRoute(builder: (c) => CalculatePage()));
               },
               child: Container(
-                margin: EdgeInsets.only(top: 16),
-                padding: EdgeInsets.all(12),
+                margin: const EdgeInsets.only(top: 16),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                     color: const Color(0xff212121),
                     borderRadius: BorderRadius.circular(20)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Calculator',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                     ),
-                    Text(
+                    const Text(
                         "Calculate how much money you'll get if your cryptocurrency grows"),
                     Align(
                       alignment: Alignment.bottomRight,
