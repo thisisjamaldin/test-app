@@ -56,7 +56,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       decoration: InputDecoration(
           border: InputBorder.none,
           hintText: widget.hint,
-          hintStyle: TextStyle(color: Color(0xff12121299).withOpacity(0.6))),
+          hintStyle: TextStyle(color: Color(0xff121212).withOpacity(0.6))),
     );
   }
 }

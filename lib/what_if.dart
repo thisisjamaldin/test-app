@@ -1,4 +1,6 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:test_app/local_data.dart';
 import 'package:test_app/widget/custom_text_field.dart';
 
 class WhatIfPage extends StatefulWidget {
@@ -133,7 +135,7 @@ class _WhatIfPageState extends State<WhatIfPage> {
                               onTap: () {
                                 setState(() {
                                   selectedCrypto = 0;
-                                  selectedYear='2024';
+                                  selectedYear = '2024';
                                 });
                               },
                               child: Container(
@@ -157,8 +159,7 @@ class _WhatIfPageState extends State<WhatIfPage> {
                               onTap: () {
                                 setState(() {
                                   selectedCrypto = 1;
-                                  selectedYear='2024';
-                                  
+                                  selectedYear = '2024';
                                 });
                               },
                               child: Container(
@@ -182,8 +183,7 @@ class _WhatIfPageState extends State<WhatIfPage> {
                               onTap: () {
                                 setState(() {
                                   selectedCrypto = 2;
-                                  selectedYear='2024';
-
+                                  selectedYear = '2024';
                                 });
                               },
                               child: Container(
@@ -207,8 +207,7 @@ class _WhatIfPageState extends State<WhatIfPage> {
                               onTap: () {
                                 setState(() {
                                   selectedCrypto = 3;
-                                  selectedYear='2024';
-
+                                  selectedYear = '2024';
                                 });
                               },
                               child: Container(
@@ -278,16 +277,23 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                         color: Color(0xffF5F5F5),
                                         borderRadius:
                                             BorderRadius.circular(20)),
-                                    child: DropdownButtonHideUnderline(
-                                        child: DropdownButton<String>(
+                                    child: DropdownButton2(
+                                      isExpanded: true,
+
                                       // Use selectedYear when showing the current selection, otherwise set to null
                                       // value: selectedYear,
                                       hint: Text(
                                           selectedYear), // Display the selected year as a hint
                                       items: years
-                                          .where((y) => y != selectedYear )
-                                          .where((y) => selectedCrypto==2 ? y=='2022' || y =='2023'||y=='2024':true)
-                                          .where((y) => selectedCrypto==3 ? y =='2023'||y=='2024':true)
+                                          .where((y) => y != selectedYear)
+                                          .where((y) => selectedCrypto == 2
+                                              ? y == '2022' ||
+                                                  y == '2023' ||
+                                                  y == '2024'
+                                              : true)
+                                          .where((y) => selectedCrypto == 3
+                                              ? y == '2023' || y == '2024'
+                                              : true)
                                           .map((year) {
                                         return DropdownMenuItem(
                                           value: year,
@@ -300,7 +306,33 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                           selectedYear = value!;
                                         });
                                       },
-                                    )),
+                                      dropdownStyleData: DropdownStyleData(
+                                        maxHeight: 140,
+                                        width: 180,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Colors.white,
+                                        ),
+                                        offset: const Offset(-10, 0),
+                                        scrollbarTheme: ScrollbarThemeData(
+                                          radius: const Radius.circular(10),
+                                          thickness:
+                                              MaterialStateProperty.all(3),
+                                          thumbVisibility:
+                                              MaterialStateProperty.all(true),
+                                          trackVisibility:
+                                              WidgetStatePropertyAll(true),
+                                          trackColor: WidgetStatePropertyAll(
+                                              Color(0xffC7C7C7)),
+
+                                          // crossAxisMargin: 12,
+                                          mainAxisMargin: 12,
+                                          thumbColor: WidgetStatePropertyAll(
+                                              Color(0xff121212)),
+                                        ),
+                                      ),
+                                    ),
                                   )),
                                   SizedBox(
                                     width: 16,
@@ -312,29 +344,55 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                         color: Color(0xffF5F5F5),
                                         borderRadius:
                                             BorderRadius.circular(20)),
-                                    child: DropdownButtonHideUnderline(
-                                      child: DropdownButton(
-                                          value: selectedMonth,
-                                          items: selectedYear == '2024'
-                                              ? [
-                                                  ...months.take(9).map((mnth) {
-                                                    return DropdownMenuItem(
-                                                        value: mnth,
-                                                        child: Text(mnth));
-                                                  })
-                                                ]
-                                              : [
-                                                  ...months.map((mnth) {
-                                                    return DropdownMenuItem(
-                                                        value: mnth,
-                                                        child: Text(mnth));
-                                                  })
-                                                ],
-                                          onChanged: (value) {
-                                            setState(() {
-                                              selectedMonth = value!;
-                                            });
-                                          }),
+                                    child: DropdownButton2(
+                                      isExpanded: true,
+                                      value: selectedMonth,
+                                      items: selectedYear == '2024'
+                                          ? [
+                                              ...months.take(9).map((mnth) {
+                                                return DropdownMenuItem(
+                                                    value: mnth,
+                                                    child: Text(mnth));
+                                              })
+                                            ]
+                                          : [
+                                              ...months.map((mnth) {
+                                                return DropdownMenuItem(
+                                                    value: mnth,
+                                                    child: Text(mnth));
+                                              })
+                                            ],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          selectedMonth = value!;
+                                        });
+                                      },
+                                      dropdownStyleData: DropdownStyleData(
+                                        maxHeight: 140,
+                                        width: 180,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Colors.white,
+                                        ),
+                                        offset: const Offset(-10, 0),
+                                        scrollbarTheme: ScrollbarThemeData(
+                                          radius: const Radius.circular(10),
+                                          thickness:
+                                              MaterialStateProperty.all(3),
+                                          thumbVisibility:
+                                              MaterialStateProperty.all(true),
+                                          trackVisibility:
+                                              WidgetStatePropertyAll(true),
+                                          trackColor: WidgetStatePropertyAll(
+                                              Color(0xffC7C7C7)),
+
+                                          // crossAxisMargin: 12,
+                                          mainAxisMargin: 12,
+                                          thumbColor: WidgetStatePropertyAll(
+                                              Color(0xff121212)),
+                                        ),
+                                      ),
                                     ),
                                   )),
                                 ],
@@ -402,7 +460,7 @@ class _WhatIfPageState extends State<WhatIfPage> {
                                           ),
                                         ),
                                         Text(
-                                          '100 000\$',
+                                          '${calculate()}\$',
                                           style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               fontSize: 32),
@@ -441,6 +499,22 @@ class _WhatIfPageState extends State<WhatIfPage> {
         ],
       )),
     );
+  }
+
+  int calculate() {
+    Map<String, Map<String, double>> selectCrypto = selectedCrypto == 0
+        ? ethereumPrices
+        : selectedCrypto == 1
+            ? bitcoinPrices
+            : selectedCrypto == 2
+                ? solanaPrices
+                : bnbPrices;
+    double investmentPrice = selectCrypto[selectedYear]?[selectedMonth] ?? 0;
+    double unitsBought =
+        int.parse(amountCtrl.text.replaceAll('\$', '')) / investmentPrice;
+    double currentPrice = selectCrypto['2024']?['October'] ?? 0;
+    double currentInvestmentValue = unitsBought * currentPrice;
+    return currentInvestmentValue.toInt();
   }
 
   bool validFields() {

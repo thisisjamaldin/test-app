@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app/widget/custom_text_field.dart';
 
@@ -340,28 +341,79 @@ class _CalculatePageState extends State<CalculatePage> {
                                   ),
                                   Expanded(
                                       child: Container(
-                                    padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-                                    decoration: BoxDecoration(
-                                        color: Color(0xffF5F5F5),
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: DropdownButtonHideUnderline(
-                                      child: DropdownButton(
-                                          value: selectedMonth,
-                                          items: [
-                                            ...months.map((mnth) {
-                                              return DropdownMenuItem(
-                                                  value: mnth,
-                                                  child: Text(mnth));
-                                            })
-                                          ],
-                                          onChanged: (value) {
-                                            setState(() {
-                                              selectedMonth = value!;
-                                            });
-                                          }),
-                                    ),
-                                  )),
+                                          padding:
+                                              EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffF5F5F5),
+                                              borderRadius:
+                                                  BorderRadius.circular(20)),
+                                          child: DropdownButton2(
+                                            isExpanded: true,
+                                            value: selectedMonth,
+                                            items: [
+                                              ...months.map((mnth) {
+                                                return DropdownMenuItem(
+                                                    value: mnth,
+                                                    child: Text(mnth));
+                                              })
+                                            ],
+                                            onChanged: (value) {
+                                              setState(() {
+                                                selectedMonth = value!;
+                                              });
+                                            },
+                                            dropdownStyleData:
+                                                DropdownStyleData(
+                                              maxHeight: 140,
+                                              width: 180,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                color: Colors.white,
+                                              ),
+                                              offset: const Offset(-10, 0),
+                                              scrollbarTheme:
+                                                  ScrollbarThemeData(
+                                                radius:
+                                                    const Radius.circular(10),
+                                                thickness:
+                                                    MaterialStateProperty.all(
+                                                        3),
+                                                thumbVisibility:
+                                                    MaterialStateProperty.all(
+                                                        true),
+                                                trackVisibility:
+                                                    WidgetStatePropertyAll(
+                                                        true),
+                                                trackColor:
+                                                    WidgetStatePropertyAll(
+                                                        Color(0xffC7C7C7)),
+
+                                                // crossAxisMargin: 12,
+                                                mainAxisMargin: 12,
+                                                thumbColor:
+                                                    WidgetStatePropertyAll(
+                                                        Color(0xff121212)),
+                                              ),
+                                            ),
+                                          )
+                                          //  DropdownButtonHideUnderline(
+                                          //   child: DropdownButton(
+                                          //       value: selectedMonth,
+                                          //       items: [
+                                          //         ...months.map((mnth) {
+                                          //           return DropdownMenuItem(
+                                          //               value: mnth,
+                                          //               child: Text(mnth));
+                                          //         })
+                                          //       ],
+                                          //       onChanged: (value) {
+                                          //         setState(() {
+                                          //           selectedMonth = value!;
+                                          //         });
+                                          //       }),
+                                          // ),
+                                          )),
                                 ],
                               ),
                             ],
@@ -391,11 +443,12 @@ class _CalculatePageState extends State<CalculatePage> {
                                         Align(
                                           alignment: Alignment.topRight,
                                           child: GestureDetector(
-                                            onTap: (){
+                                            onTap: () {
                                               Navigator.pop(c);
                                             },
                                             child: Container(
-                                              padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
+                                              padding: EdgeInsets.fromLTRB(
+                                                  8, 8, 8, 0),
                                               color: Colors.transparent,
                                               child: Icon(
                                                 Icons.close,
@@ -415,9 +468,9 @@ class _CalculatePageState extends State<CalculatePage> {
                                         Text(
                                           'By September ${yearCtrl.text}, you could have if it grows',
                                           style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500,
-                                              ),
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                           textAlign: TextAlign.center,
                                         ),
                                       ],
