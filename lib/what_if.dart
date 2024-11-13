@@ -86,7 +86,7 @@ class _WhatIfPageState extends State<WhatIfPage> {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
                   color: Colors.white),
@@ -95,6 +95,7 @@ class _WhatIfPageState extends State<WhatIfPage> {
                   Expanded(
                     child: ListView(
                       children: [
+                        SizedBox(height: 16,),
                         Container(
                           margin: EdgeInsets.only(top: 8),
                           padding: EdgeInsets.all(12),

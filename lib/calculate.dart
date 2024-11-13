@@ -32,7 +32,6 @@ class _CalculatePageState extends State<CalculatePage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     amountCtrl.dispose();
     growthCtrl.dispose();
@@ -68,8 +67,8 @@ class _CalculatePageState extends State<CalculatePage> {
                   onTap: () => Navigator.pop(context),
                   child: Container(
                       color: Colors.transparent,
-                      padding: EdgeInsets.all(12),
-                      child: Icon(
+                      padding: const EdgeInsets.all(12),
+                      child: const Icon(
                         Icons.arrow_back_rounded,
                         size: 24,
                         color: Colors.white,
@@ -87,8 +86,8 @@ class _CalculatePageState extends State<CalculatePage> {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              decoration: const BoxDecoration(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
                   color: Colors.white),
               child: Column(
@@ -96,26 +95,29 @@ class _CalculatePageState extends State<CalculatePage> {
                   Expanded(
                     child: ListView(
                       children: [
+                        const SizedBox(
+                          height: 16,
+                        ),
                         Container(
                           margin: EdgeInsets.only(top: 8),
                           padding: EdgeInsets.all(12),
                           decoration: BoxDecoration(
                               color: Color(0xff409BFF),
                               borderRadius: BorderRadius.circular(20)),
-                          child: Text(
+                          child: const Text(
                             'Calculate your profit based on the assumption of future investment growth',
                             style: TextStyle(fontSize: 16),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 40,
                         ),
-                        Text(
+                        const Text(
                           'Cryptocurrency',
                           style:
                               TextStyle(fontSize: 16, color: Color(0xff121212)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Wrap(
@@ -127,19 +129,19 @@ class _CalculatePageState extends State<CalculatePage> {
                                 });
                               },
                               child: Container(
-                                margin: EdgeInsets.only(right: 8),
-                                padding: EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                margin: const EdgeInsets.only(right: 8),
+                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 0
-                                        ? Color(0xff409BFF)
-                                        : Color(0xffF5F5F5),
+                                        ? const Color(0xff409BFF)
+                                        : const Color(0xffF5F5F5),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Text(
                                   'Ethereum',
                                   style: TextStyle(
                                       color: selectedCrypto == 0
                                           ? Colors.white
-                                          : Color(0xff121212)),
+                                          : const Color(0xff121212)),
                                 ),
                               ),
                             ),
@@ -150,19 +152,19 @@ class _CalculatePageState extends State<CalculatePage> {
                                 });
                               },
                               child: Container(
-                                margin: EdgeInsets.only(right: 8),
-                                padding: EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                margin: const EdgeInsets.only(right: 8),
+                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 1
-                                        ? Color(0xff409BFF)
-                                        : Color(0xffF5F5F5),
+                                        ? const Color(0xff409BFF)
+                                        : const Color(0xffF5F5F5),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Text(
                                   'Bitcoin',
                                   style: TextStyle(
                                       color: selectedCrypto == 1
                                           ? Colors.white
-                                          : Color(0xff121212)),
+                                          : const Color(0xff121212)),
                                 ),
                               ),
                             ),
@@ -173,19 +175,19 @@ class _CalculatePageState extends State<CalculatePage> {
                                 });
                               },
                               child: Container(
-                                margin: EdgeInsets.only(right: 8),
-                                padding: EdgeInsets.fromLTRB(12, 19, 12, 19),
+                                margin: const EdgeInsets.only(right: 8),
+                                padding: const EdgeInsets.fromLTRB(12, 19, 12, 19),
                                 decoration: BoxDecoration(
                                     color: selectedCrypto == 2
-                                        ? Color(0xff409BFF)
-                                        : Color(0xffF5F5F5),
+                                        ? const Color(0xff409BFF)
+                                        : const Color(0xffF5F5F5),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Text(
                                   'Solana',
                                   style: TextStyle(
                                       color: selectedCrypto == 2
                                           ? Colors.white
-                                          : Color(0xff121212)),
+                                          : const Color(0xff121212)),
                                 ),
                               ),
                             ),
